@@ -5,7 +5,8 @@ body {
   background: #000;
   color: #0f0;
   font-family: 'Share Tech Mono', monospace, monospace;
-  overflow: hidden;
+  overflow: auto; /* allow page scrolling on small screens */
+  -webkit-font-smoothing: antialiased;
 }
 
 /* Fullscreen matrix canvas */
@@ -18,13 +19,14 @@ body {
   z-index: 0;
   background: radial-gradient(ellipse at center, rgba(0,0,0,0.3), #000 60%);
   opacity: 0.65; /* dim the matrix so overlay text is readable */
+  pointer-events: none; /* don't block touches on mobile */
 }
 
 .overlay {
   position: relative;
   z-index: 20; /* ensure overlay and UI sit above the canvas */
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
@@ -74,9 +76,25 @@ body {
 footer { padding: 12px 24px; color: #0f0; background: rgba(0,0,0,0.25); font-size: 0.9rem; }
 
 /* Responsive */
-@media (max-width: 768px) {
-  .nav-links { display: none; }
-  .hamburger { display: block; }
+@media (max-width: 992px) {
+  /* Mobile/tablet adjustments */
+  .nav-links { display: flex; flex-direction: column; gap: 8px; padding: 8px 12px; }
+  .nav-links a { font-size: 0.94rem; }
+  .hamburger { display: none; }
+  .overlay { padding: 8px 6px; }
+  .navbar { padding: 8px 12px; }
+  .terminal { padding: 12px; }
+  .terminal-output { max-height: 44vh; }
+  .home-context { padding: 10px; }
+  .muted { font-size: 0.95rem; }
+}
+
+@media (max-width: 480px) {
+  .nav-links a { font-size: 0.88rem; }
+  .logo { font-size: 1rem; }
+  .terminal { padding: 10px; }
+  .terminal-output { max-height: 40vh; }
+  .home-context p { font-size: 0.95rem; }
 }
 
 /* Small visual polish */
@@ -108,3 +126,55 @@ footer { padding: 12px 24px; color: #0f0; background: rgba(0,0,0,0.25); font-siz
 
 /* Ensure other UI pieces appear above the matrix */
 .resource-actions, .nav-banner, footer { position: relative; z-index: 21; }
+
+/* Mobile floating switch (three-dot) */
+.mobile-switch {
+  position: fixed !important;
+  right: 16px !important;
+  bottom: 18px !important;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(242, 255, 255, 0.06);
+  border: 1px solid rgba(0,255,0,0.06);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999 !important; /* ensure highest stacking */
+  backdrop-filter: blur(4px);
+  padding: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.45);
+  pointer-events: auto; /* ensure clickable */
+  touch-action: manipulation;
+}
+.mobile-switch .dot { width:8px;height:8px;background:#00796b;border-radius:50%;display:inline-block;margin:3px; }
+
+@media (max-width: 992px) {
+  .mobile-switch { display:flex; }
+  /* when mobile-open show nav as full centered list */
+  body.mobile-open .nav-links {
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    top: 80px;
+    background: rgba(0,0,0,0.9);
+    padding: 18px 20px;
+    border-radius: 12px;
+    display:flex;
+    flex-direction: column;
+    gap: 18px;
+    align-items: center;
+    z-index: 55;
+  }
+  body.mobile-open .nav-links a {
+    font-size: 1.2rem;
+    padding: 8px 12px;
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: rgba(0,255,0,0.02);
+    border-radius: 8px;
+  }
+  /* ensure switch stays on top while overlay shown */
+  body.mobile-open .mobile-switch { right: 16px !important; }
+}
