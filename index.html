@@ -107,5 +107,33 @@
 </script>
 
     <!-- script.js moved to scan page only -->
+      <!-- Mobile switch button (shows on small screens) -->
+      <button class="mobile-switch" aria-label="Open menu" id="mobileSwitch">
+        <!-- 3x3 dot grid -->
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+      </button>
+
+      <script>
+        // Mobile menu toggle using the floating switch and auto-close on link click
+        (function(){
+          const btn = document.getElementById('mobileSwitch');
+          const links = document.querySelectorAll('.nav-links a');
+          if (btn) {
+            btn.addEventListener('click', () => {
+              document.body.classList.toggle('mobile-open');
+              const open = document.body.classList.contains('mobile-open');
+              btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+            });
+          }
+          if (links && links.length) {
+            links.forEach(a => a.addEventListener('click', () => {
+              // close overlay when a link is tapped on mobile
+              if (document.body.classList.contains('mobile-open')) document.body.classList.remove('mobile-open');
+            }));
+          }
+        })();
+      </script>
 </body>
 </html>
