@@ -1,0 +1,13 @@
+{
+  "name": "intelx-tracker",
+  "version": "1.0.0",
+  "description": "Small tracker server for INTELX (IP geolocation -> Discord)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "node-fetch": "^2.6.12"
+  }
+}
