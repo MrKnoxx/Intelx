@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Learn ethical hacking and cybersecurity with free tutorials and resources.">
-  <title> Ethical Hacking Hub</title>
+  <title>Ethical Hacking Hub</title>
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
@@ -12,7 +12,7 @@
     .logo {
       font-family: 'Share Tech Mono', monospace;
       font-size: 28px;
-      color: #00ff00; /* neon green */
+      color: #00ff00;
       text-decoration: none;
       font-weight: bold;
       letter-spacing: 1px;
@@ -26,6 +26,18 @@
       0% { text-shadow: 0 0 2px #00ff00; }
       50% { text-shadow: 0 0 8px #00ff00; }
       100% { text-shadow: 0 0 2px #00ff00; }
+    }
+    .nav-banner span {
+      display: none;
+    }
+    .nav-banner {
+      height: 0;
+      overflow: hidden;
+    }
+    #home-banner {
+      display: none;
+      height: 0;
+      overflow: hidden;
     }
   </style>
 </head>
@@ -42,24 +54,12 @@
     </nav>
 
     <section id="resources" class="resources">
-      <div class="nav-banner">
-        <span></span>
-        <span></span>
-      </div>
+      <div class="nav-banner"></div>
       <div class="resource-actions"></div>
     </section>
 
     <section id="home" class="content">
-      <div id="home-banner" class="home-banner" style="display:none">
-        <div class="nav-banner home-copy">
-          <span>Home</span>
-          <span>Resources</span>
-        </div>
-      </div>
-          <section id="home" class="content">
-      <div id="home-banner" class="home-banner" style="display:block"></div>
       <h1>Learn Ethical Hacking & Cybersecurity</h1>
-    </section>
       <div class="home-context">
         <h3>We help protect you from hackers</h3>
         <p>Our tools and guides are designed to help prevent unauthorized access and keep your accounts safe. We provide resources, scanning tools, and clear steps to secure devices and networks.</p>
@@ -68,7 +68,6 @@
         <p class="help-note">Tip: For immediate assistance, run a quick scan from Resources and then use <code>help</code> in the terminal for next steps.</p>
       </div>
     </section>
-
 
     <footer>
       <p>&copy; 2025 INTELX. All rights reserved.</p>
@@ -136,8 +135,3 @@
   </script>
 </body>
 </html>
-
-
-
-
-
