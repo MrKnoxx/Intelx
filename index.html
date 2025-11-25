@@ -8,13 +8,33 @@
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <style>
+    .logo {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 28px;
+      color: #00ff00; /* neon green */
+      text-decoration: none;
+      font-weight: bold;
+      letter-spacing: 1px;
+      animation: glow 2s infinite;
+    }
+    .logo:hover {
+      color: #66ff66;
+      text-shadow: 0 0 4px #00ff00;
+    }
+    @keyframes glow {
+      0% { text-shadow: 0 0 2px #00ff00; }
+      50% { text-shadow: 0 0 8px #00ff00; }
+      100% { text-shadow: 0 0 2px #00ff00; }
+    }
+  </style>
 </head>
 <body>
   <div class="overlay">
     <nav class="navbar">
-      <a href="/intelx" class="logo">INTELX</a>
+      <a href="/" class="logo">INTELX</a>
       <ul class="nav-links">
-        <li><a href="/intelx">Home</a></li>
+        <li><a href="/">Home</a></li>
         <li><a href="/resources">Resources</a></li>
         <li><a href="/scan">Scan</a></li>
       </ul>
