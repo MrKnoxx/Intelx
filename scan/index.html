@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Scan - INTELX</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <style>
@@ -16,14 +16,14 @@
   </head>
   <body>
     <div class="overlay">
-  <!-- full-screen matrix background for scan page -->
-  <canvas id="matrix" style="position:fixed;inset:0;width:100%;height:100%;z-index:0;opacity:1;pointer-events:none;"></canvas>
+      <!-- full-screen matrix background for scan page -->
+      <canvas id="matrix" style="position:fixed;inset:0;width:100%;height:100%;z-index:0;opacity:1;pointer-events:none;"></canvas>
       <nav class="navbar">
         <div class="logo">INTELX</div>
         <ul class="nav-links">
-          <li><a href="../home/index.html">Home</a></li>
-          <li><a href="../resources/index.html">Resources</a></li>
-          <li><a href="../scan/index.html">Scan</a></li>
+          <li><a href="/home">Home</a></li>
+          <li><a href="/resources">Resources</a></li>
+          <li><a href="/scan">Scan</a></li>
         </ul>
         <div class="hamburger">☰</div>
       </nav>
@@ -50,10 +50,10 @@
         <button id="scan-run" style="padding:8px 12px;border-radius:6px;background:linear-gradient(90deg,#073,#06c);border:none;color:#001100;font-weight:700;">Run Scan</button>
       </div>
       <pre id="scan-output" style="margin-top:12px;color:#9ff29f;white-space:pre-wrap;max-height:280px;overflow:auto;padding:12px;border-radius:6px;background:rgba(0,0,0,0.16);border:1px solid rgba(0,255,0,0.04);"></pre>
-      <p style="margin-top:12px"><a href="../index.html" style="color:#9ff29f">Back to main</a></p>
+      <p style="margin-top:12px"><a href="/home" style="color:#9ff29f">Back to main</a></p>
     </div>
 
-    <script src="../script.js" defer></script>
+    <script src="/script.js" defer></script>
     <script>
       function generateScanReport(target){
         const now = new Date();
