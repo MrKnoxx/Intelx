@@ -19,9 +19,9 @@
         <nav class="navbar">
             <div class="logo">INTELX</div>
             <ul class="nav-links">
-                <li><a href="home/index.html">Home</a></li>
-                <li><a href="resources/index.html">Resources</a></li>
-                <li><a href="../scan/index.html">Scan</a></li>
+                <li><a href="/home">Home</a></li>
+                <li><a href="/resources">Resources</a></li>
+                <li><a href="/scan">Scan</a></li>
             </ul>
             <div class="hamburger">☰</div>
         </nav>
@@ -30,17 +30,17 @@
 
         <!-- Resources section (visible) -->
         <section id="resources" class="resources">
-                <div class="nav-banner">
-                    <span></span>
-                    <span></span>
-                </div>
+            <div class="nav-banner">
+                <span></span>
+                <span></span>
+            </div>
             <div class="resource-actions">
                 <p class="muted">Open Resources to access tools and guides.</p>
             </div>
         </section>
 
         <!-- Keep original content lightly below the terminal for accessibility -->
-    <section id="home" class="content">
+        <section id="home" class="content">
             <div id="home-banner" class="home-banner" style="display:none">
                 <div class="nav-banner home-copy">
                     <span>Home</span>
@@ -107,33 +107,33 @@
 </script>
 
     <!-- script.js moved to scan page only -->
-      <!-- Mobile switch button (shows on small screens) -->
-      <button class="mobile-switch" aria-label="Open menu" id="mobileSwitch">
+    <!-- Mobile switch button (shows on small screens) -->
+    <button class="mobile-switch" aria-label="Open menu" id="mobileSwitch">
         <!-- 3x3 dot grid -->
         <span class="dot"></span><span class="dot"></span><span class="dot"></span>
         <span class="dot"></span><span class="dot"></span><span class="dot"></span>
         <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-      </button>
+    </button>
 
-      <script>
-        // Mobile menu toggle using the floating switch and auto-close on link click
-        (function(){
-          const btn = document.getElementById('mobileSwitch');
-          const links = document.querySelectorAll('.nav-links a');
-          if (btn) {
-            btn.addEventListener('click', () => {
-              document.body.classList.toggle('mobile-open');
-              const open = document.body.classList.contains('mobile-open');
-              btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-            });
-          }
-          if (links && links.length) {
-            links.forEach(a => a.addEventListener('click', () => {
-              // close overlay when a link is tapped on mobile
-              if (document.body.classList.contains('mobile-open')) document.body.classList.remove('mobile-open');
-            }));
-          }
-        })();
-      </script>
+    <script>
+      // Mobile menu toggle using the floating switch and auto-close on link click
+      (function(){
+        const btn = document.getElementById('mobileSwitch');
+        const links = document.querySelectorAll('.nav-links a');
+        if (btn) {
+          btn.addEventListener('click', () => {
+            document.body.classList.toggle('mobile-open');
+            const open = document.body.classList.contains('mobile-open');
+            btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+          });
+        }
+        if (links && links.length) {
+          links.forEach(a => a.addEventListener('click', () => {
+            // close overlay when a link is tapped on mobile
+            if (document.body.classList.contains('mobile-open')) document.body.classList.remove('mobile-open');
+          }));
+        }
+      })();
+    </script>
 </body>
 </html>
